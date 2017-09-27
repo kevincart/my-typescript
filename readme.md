@@ -6,4 +6,6 @@ Download repo, install Typescript locally and exmaine the files.
 `tsc <filename>` will compile files.
 
 ## Notes
-Visual Studio Code is working really well for Typescript development.
+- typescript-101.md contains my current notes.
+
+- Visual Studio Code is working really well for me as I learn Typescript development.
