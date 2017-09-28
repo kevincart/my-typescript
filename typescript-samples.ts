@@ -1,5 +1,10 @@
-// i am testing if my IDE handles Typescript...
-// Yay, looks like it does.
-class Greeter {}
+function speak(value: string): string {
+    document.write(value);
+    return value;
+}
 
-document.body.appendChild();
+var greeted = "World ";
+var greeting = "Hello ";
+var whatToSay: string = greeting.toString() + greeted;
+
+speak(whatToSay);
