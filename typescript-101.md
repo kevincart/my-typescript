@@ -73,7 +73,36 @@ function speak(value: string): string {
 - Typescript can determine types on its own from plain Javascript, by inspecting the assignment of each property or variable to see what type of value was assigned to them.
 - Return values for function are also inferred, and enforced where that function is used.
 - These inferences can echo through the code and effect 'downstream' functions and values, so discipline is key.
-- If TS doesn't have enough information to correctly infer types, TS assigns the 'ANY' type. This is the most unrestrictive type.
+- If TS doesn't have enough information to correctly infer types, TS assigns the 'ANY' type. This is the most unrestricted type.
+
+### Specifying Types
+- TS uses `parameter: type` format to specify types.
+- Basic examples:
+    - `var x: number = 42;`
+    - `function(x: number): number { return x }`
+        - In this case, the return value type is specified after the parens. 
+- Union Types:
+    - Give consumers of a function the option to pass in several different types for a given property.
+    - Specified with `|`.
+    - Can be wrapped in parens to clean up code.
+    - Examples:
+        `var x: (number | string) = 'abc';`
+        `function myFunc(x: (string | any[])): string { return x }`
+    - `instanceOf` JS method can be used to clarify type:
+        - `if ( x instanceOf Array ) { do array stuff }`
+        - This is the 'Typeguard syntax.'
+        - Primitive Typeguard:
+            - `if ( typeof x === 'string' ) { do string stuff }`
+
+### Overloaded Functions
+- In classic static languages, you would often define the same function multiple times with specific combinations of parameter types, and when consuming the required typed definition would be used. Javascript won't allow this, but Typescript allows you to.
+- Example:
+    - 
+    ```
+    function totalLength(x:string, y:string): number
+    function totalLength(x:any[], y:any[]): number
+    ```
+    - These overloaded definitions are removed from the compiled JS, and only the valid defition is used.
 
 ## Resources
 - http://www.typescriptlang.org/ Online compiler

@@ -37,7 +37,7 @@ function calculateAge(birthYear) {
     return Date.now() - birthYear;
 }
 
-function totalLength(x, y) {
-    let total = x.length + y.length;
+function totalLength(x: (string | any[]), y: string): number {
+    let total: number = x.length + y.length;
     return total;
 }
