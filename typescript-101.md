@@ -36,6 +36,45 @@ function speak(value: string): string {
 ```
 - In this example, I am declaring the parameter type required, and the expected return type of the function. If these values are not as expected, TS raises an exception.
 
+### Configuring your compiler
+- `tsc -w [filename]` Starts the compiler, and it will wait for changes on the specified file.
+- `tsconfig.json` Store config options for Typescript here.
+    - After you create this config, you can simply run `tsc -w` and Typescript will watch the whole folder for changes.
+    - You can specifify a compilation target here, with
+    ```
+    {
+    "compilerOptions": {
+        "target": "es5"
+    }
+    ```
+### Use the latest ECMAScript syntax with ease when using Typescript
+- TS will transpile to a common version of JS at compile time.
+- This means you can take advantage of advanced features, such as spread operators, destructuring, and template strings.
+
+### Computed properties
+- Allows you to define a property on an object with a name that is computer dynamically at run-time.
+- Computed properties can appear within things like object key strings, so places where template strings might not be available.
+- To use a computed property in Typescript, simply wrap the property to be computed in brackets like this:
+    - `const HERE = 'Here';`
+    - `['HERE is a computed property]`; // 'Here is a computed property'
+
+### Javascript Types
+- ECMAScript 5 Types:
+    - boolean
+    - number
+    - string
+    - null / undefined
+    - object
+        - object special types (unique prototypal inheritance):
+        - functions
+        - arrays
+
+### Typescript Type Inference
+- Typescript can determine types on its own from plain Javascript, by inspecting the assignment of each property or variable to see what type of value was assigned to them.
+- Return values for function are also inferred, and enforced where that function is used.
+- These inferences can echo through the code and effect 'downstream' functions and values, so discipline is key.
+- If TS doesn't have enough information to correctly infer types, TS assigns the 'ANY' type. This is the most unrestrictive type.
+
 ## Resources
 - http://www.typescriptlang.org/ Online compiler
 - http://www.jetbrains.com/webstorm Webstorm

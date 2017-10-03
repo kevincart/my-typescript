@@ -8,4 +8,6 @@ Download repo, install Typescript locally and exmaine the files.
 ## Notes
 - typescript-101.md contains my current notes.
 
-- Visual Studio Code is working really well for me as I learn Typescript development.
+- TypescriptTodo is a simple To Do app I am making while following the Lynda Typescript Essential Training.
+
+- Currently using Visual Studio Code for writing Typescript.
