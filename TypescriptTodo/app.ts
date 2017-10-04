@@ -1,37 +1,22 @@
-var container = document.getElementById('container');
+interface Todo {
+    name: string;
+    state: TodoState;
+}
 
-var todo = {
-    id: 123,
+var todo: Todo = {
     name: "Pick up drycleaning",
-    completed: true
+    state: TodoState.New
 }
 
-container.innerHTML = `
-<div todo='${todo.id}' class="list-group-item}">
-<i class="${ todo.completed ? " ": "hidden"} text-success glyphicon glyphicon-ok"></i>
-<span class="name">${ todo.name }</span>
-</div>
-`
-
-// Destructuring example
-var array = [123, "Pick up drycleaning", false];
-var [id, title, completed] = array;
-
-// Another destructuring example
-var a = 1;
-var b = 5;
-
-[a,b] = [b,a]; // reverses values
-
-// Computed Property example:
-const osPrefix = 'os_';
-
-var support = {
-    [osPrefix + 'Windows']: isSupported('Windows'),
-    [osPrefix + 'iOS']: isSupported('iOS'),
-    [osPrefix + 'Android']: isSupported('Android')
+enum TodoState {
+    New = 1,
+    Active,
+    Complete,
+    Deleted
 }
 
-function isSupported(os) {
-    return Math.random() >= 0.5;
+function delete(todo: Todo) {
+    if(todo.state != TodoState.Complete) {
+        throw "Can't delete incomplete task!"
+    }
 }

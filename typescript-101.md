@@ -104,6 +104,57 @@ function speak(value: string): string {
     ```
     - These overloaded definitions are removed from the compiled JS, and only the valid defition is used.
 
+### Defining Custom Types
+- Interfaces
+    - ``` 
+    interface [type name] {
+        value: type;
+        value: type;
+    }
+     ```
+    - Strictly used for compile time checks, and have no other effects on the code at runtime.
+    - Once the custom type is defined, it is used like any other type definition:
+        - `var x: [custom type name] = {}`
+        - `var x = <[custom type name]>{}` this is 'casting'
+    
+    - Can define optional properties with `?` after the property name.
+    - Define methods with a similar syntax to function definitions, just without the 'function' keyword. Can specify expected parameter types, and return types.
+        - ```
+        interface IToDoService {
+            add(todo: Todo): Todo;
+            delete(todoId: number): void;
+            getAll(): Todo[];
+            getById(todoId: number): Todo;
+        }
+        ```
+        - You can also define a function interface without a named method like this
+        ```
+        interface jQuery {
+            (selector: string): HTMLElement;
+            version: number;
+        }
+        ```
+            This will act as a single named function object.
+    - Extending interface definitions
+        - Simply make a new interface definition with the same name, and add the properties and methods you desire.
+- Enums
+    - Define a custom set of named numeric constants.
+    - Example:
+        - ```
+        enum TodoState {
+            New = 1,
+            Active,
+            Complete,
+            Deleted
+        }
+        ```
+- Anonymous Types
+    - `var todo: { name: string };`
+- Classes
+
+### Typescript Classes
+
+
 ## Resources
 - http://www.typescriptlang.org/ Online compiler
 - http://www.jetbrains.com/webstorm Webstorm
