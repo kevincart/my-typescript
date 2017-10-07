@@ -97,62 +97,80 @@ function speak(value: string): string {
 ### Overloaded Functions
 - In classic static languages, you would often define the same function multiple times with specific combinations of parameter types, and when consuming the required typed definition would be used. Javascript won't allow this, but Typescript allows you to.
 - Example:
-    - 
-    ```
-    function totalLength(x:string, y:string): number
-    function totalLength(x:any[], y:any[]): number
-    ```
-    - These overloaded definitions are removed from the compiled JS, and only the valid defition is used.
+```
+function totalLength(x:string, y:string): number
+function totalLength(x:any[], y:any[]): number
+```
+- These overloaded definitions are removed from the compiled JS, and only the valid defition is used.
 
 ### Defining Custom Types
 - Interfaces
-    - ``` 
-    interface [type name] {
+```interface [type name] {
         value: type;
         value: type;
     }
-     ```
-    - Strictly used for compile time checks, and have no other effects on the code at runtime.
-    - Once the custom type is defined, it is used like any other type definition:
-        - `var x: [custom type name] = {}`
-        - `var x = <[custom type name]>{}` this is 'casting'
+```
+- Strictly used for compile time checks, and have no other effects on the code at runtime.
+- Once the custom type is defined, it is used like any other type definition:
+    - `var x: [custom type name] = {}`
+    - `var x = <[custom type name]>{}` this is 'casting'
     
     - Can define optional properties with `?` after the property name.
     - Define methods with a similar syntax to function definitions, just without the 'function' keyword. Can specify expected parameter types, and return types.
-        - ```
-        interface IToDoService {
-            add(todo: Todo): Todo;
-            delete(todoId: number): void;
-            getAll(): Todo[];
-            getById(todoId: number): Todo;
-        }
-        ```
-        - You can also define a function interface without a named method like this
-        ```
-        interface jQuery {
-            (selector: string): HTMLElement;
-            version: number;
-        }
-        ```
-            This will act as a single named function object.
-    - Extending interface definitions
-        - Simply make a new interface definition with the same name, and add the properties and methods you desire.
+```
+interface IToDoService {
+    add(todo: Todo): Todo;
+    delete(todoId: number): void;
+    getAll(): Todo[];
+    getById(todoId: number): Todo;
+}
+```
+- You can also define a function interface without a named method like this
+```
+interface jQuery {
+    (selector: string): HTMLElement;
+    version: number;
+}
+```
+- This will act as a single named function object.
+- Extending interface definitions
+    - Simply make a new interface definition with the same name, and add the properties and methods you desire.
 - Enums
     - Define a custom set of named numeric constants.
     - Example:
-        - ```
-        enum TodoState {
-            New = 1,
-            Active,
-            Complete,
-            Deleted
-        }
-        ```
+```
+enum TodoState {
+    New = 1,
+    Active,
+    Complete,
+    Deleted
+}
+```
 - Anonymous Types
     - `var todo: { name: string };`
 - Classes
 
-### Typescript Classes
+### Prototype based programming
+- Prototype object holds properties. Other objects are linked to that prototype.
+- When a member (property or method) is called for an object, JS digs into the prototype chain to find it.
+    - Object.prototype is the root object in JS.
+- Constructors create linkages to a given prototype chain.
+
+### Javascript ES6 Classes
+- ES6 introduces Classes, which provide syntactic sugar for the prototype system.
+- In order to define methods and properties, they have to be declared within the Class definition, and initialized.
+- TS makes this easy:
+```
+class TodoService {
+
+    constructor(private todos: Todo[]) {
+    }
+
+    getAll() {
+        return this.todos;
+    }
+}
+```
 
 
 ## Resources
