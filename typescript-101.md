@@ -171,6 +171,33 @@ class TodoService {
     }
 }
 ```
+- Static properties of classes:
+    - `static lastId: number = 0;`
+    - Use this to attach something to a class which you want to be a 'single source of truth' about something related to that object. This is akin to attaching a variable to a prototype constructor function in ES5.
+    - Static properties are only callable on the class itself, not on instances of that class.
+    - Often used to create utility functions.
+    - Methods can also be declared as static members of objects too.
+
+### Getter and Setter methods
+```
+var todo = {
+    get state() {
+        return this._state;
+    },
+    set state(newState) {  // Must take a parameter
+        // set logic
+        this._state = newState;
+    }
+}
+```
+
+Get and set those values like this:
+
+```
+todo.state = TodoState.Complete; // set
+
+todo.state;  // get
+```
 
 
 ## Resources
