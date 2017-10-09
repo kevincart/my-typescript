@@ -23,16 +23,16 @@ interface Todo {
     state: TodoState;
 }
 
-var todo: Todo = {
-    name: "Pick up drycleaning",
-    state: TodoState.New
-}
-
 enum TodoState {
     New = 1,
     Active,
     Complete,
     Deleted
+}
+
+var todo: Todo = {
+    name: "Pick up drycleaning",
+    state: TodoState.New
 }
 
 class SmartTodo {
@@ -63,3 +63,8 @@ class SmartTodo {
         this.name = name;
     }
 }
+
+var smartTodo = new SmartTodo("Alpha");
+
+console.log("At the very end of TS todo!");
+console.log(smartTodo);
