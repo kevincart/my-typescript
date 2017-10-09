@@ -199,6 +199,14 @@ todo.state = TodoState.Complete; // set
 todo.state;  // get
 ```
 
+Stated another way, from MDN: [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get]
+```
+{get prop() { ... } }
+{get [expression]() { ... } }
+```
+
+These methods were introduced in ES6, and provide alternative calling 'routes' for getting and retreiving properties on an object. Like all object methods, this can be used in a variety of places throughout JS, including Classes and object literals.
+
 
 ## Resources
 - http://www.typescriptlang.org/ Online compiler
