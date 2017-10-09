@@ -17,7 +17,7 @@ var todo = {
     completed: true
 }
 
-container.innerHTML = `
+container.innerHTML += `
 <div todo='${todo.id}' class="list-group-item}">
 <i class="${ todo.completed ? " ": "hidden"} text-success glyphicon glyphicon-ok"></i>
 <span class="name">${ todo.name }</span>
@@ -47,17 +47,10 @@ function isSupported(os) {
     return Math.random() >= 0.5;
 }
 
-// Computed Property example:
-const osPrefix = 'os_';
-
 var support = {
     [osPrefix + 'Windows']: isSupported('Windows'),
     [osPrefix + 'iOS']: isSupported('iOS'),
     [osPrefix + 'Android']: isSupported('Android')
-}
-
-function isSupported(os) {
-    return Math.random() >= 0.5;
 }
 
 // Type inference - TS infers function return values
